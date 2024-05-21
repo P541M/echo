@@ -2,51 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Schoolbell&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Schoolbell&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Schoolbell&display=swap");
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Schoolbell', serif;
-  color: #1E2B3E;
+  font-family: "Schoolbell", serif;
+  color: #120e09;
+  background-color: #f3f4f6;
   box-sizing: border-box;
 }
 
 .font-schoolbell {
-  font-family: 'Schoolbell', serif;
+  font-family: "Schoolbell", serif;
 }
 
 .font-nunito {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
-.MessageInput, .MessageBoard, .LandingPage, .transition-opacity {
-  transition: opacity 1s ease-in-out;
+.MessageInput,
+.MessageBoard,
+.LandingPage,
+.transition-opacity {
+  transition: opacity 0.5s ease-in-out;
 }
 
-@keyframes fadeMove {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  25% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  75% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
+.MessageBoard {
+  opacity: 1;
 }
 
-.animate-fadeMove {
-  animation: fadeMove 1s ease-in-out forwards;
+.MessageInput,
+.LandingPage {
+  opacity: 0;
 }
 
 .fade-in {
