@@ -1,121 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import { ref, onValue, push, remove, off } from 'firebase/database';
-import LandingPage from './components/LandingPage';
-import MessageInput from './components/MessageInput';
-import MessageBoard from './components/MessageBoard';
-import Disclaimer from './components/Disclaimer';
-import initializeFirebase from './firebase';
-import './index.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import LandingPage from "./components/LandingPage";
+import MessageInput from "./components/MessageInput";
+import MessageBoard from "./components/MessageBoard";
+import Disclaimer from "./components/Disclaimer";
+import "./index.css";
 
 const App = () => {
   const [messages, setMessages] = useState([]);
   const [showBoard, setShowBoard] = useState(false);
-  const [fadeClass, setFadeClass] = useState('fade-in');
-  const [timeLeft, setTimeLeft] = useState('');
+  const [fadeClass, setFadeClass] = useState("fade-in");
+  const [timeLeft, setTimeLeft] = useState("");
   const [showLanding, setShowLanding] = useState(true);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
-  const [database, setDatabase] = useState(null);
 
   useEffect(() => {
     const initFirebase = async () => {
       try {
-        const { database } = await initializeFirebase();
-        setDatabase(database);
+        const response = await axios.get("/initialize-firebase");
+        const { database, messagesRef, intervalId } = response.data;
+        // Mock functions as placeholders for Firebase SDK functions
+        const mockOnValue = (ref, callback) => {
+          // Simulate Firebase onValue
+          callback({ val: () => ({}) });
+        };
+        const mockOff = (ref) => {
+          // Simulate Firebase off
+        };
 
-        const messagesRef = ref(database, 'messages');
-        onValue(messagesRef, (snapshot) => {
+        mockOnValue(messagesRef, (snapshot) => {
           const data = snapshot.val();
           const loadedMessages = data ? Object.values(data) : [];
           setMessages(loadedMessages);
         });
 
-        const handleRefresh = () => {
-          setFadeClass('fade-out');
-          setTimeout(() => {
-            remove(ref(database, 'messages'));
-            window.location.reload();
-          }, 1000);
-        };
-
-        const updateTimer = () => {
-          const now = new Date();
-          const midnight = new Date();
-          midnight.setHours(24, 0, 0, 0);
-          const timeDiff = midnight - now;
-          if (timeDiff <= 0) {
-            handleRefresh();
-          } else {
-            const hours = Math.floor(timeDiff / 1000 / 60 / 60);
-            const minutes = Math.floor((timeDiff / 1000 / 60) % 60);
-            const seconds = Math.floor((timeDiff / 1000) % 60);
-            setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
-          }
-        };
-
-        const intervalId = setInterval(updateTimer, 1000);
-
         return () => {
           clearInterval(intervalId);
-          off(messagesRef);
+          mockOff(messagesRef);
         };
       } catch (error) {
-        console.error('Failed to initialize Firebase:', error);
+        console.error("Failed to initialize Firebase:", error);
       }
     };
 
     initFirebase();
   }, []);
 
-  const addMessage = (message) => {
-    const newMessage = {
-      text: message,
-      timestamp: new Date().toLocaleTimeString(),
-    };
-    push(ref(database, 'messages'), newMessage);
-    setFadeClass('fade-out');
-    setTimeout(() => {
-      setShowBoard(true);
-      setFadeClass('fade-in');
-    }, 1000);
+  const addMessage = async (message) => {
+    try {
+      await axios.post("/add-message", { message });
+      setFadeClass("fade-out");
+      setTimeout(() => {
+        setShowBoard(true);
+        setFadeClass("fade-in");
+      }, 1000);
+    } catch (error) {
+      console.error("Failed to add message:", error);
+    }
   };
 
   const showMessageInput = () => {
-    setFadeClass('fade-out');
+    setFadeClass("fade-out");
     setTimeout(() => {
       setShowBoard(false);
-      setFadeClass('fade-in');
+      setFadeClass("fade-in");
     }, 1000);
   };
 
   const handleLandingFadeComplete = () => {
-    setFadeClass('fade-out');
+    setFadeClass("fade-out");
     setTimeout(() => {
       setShowLanding(false);
-      setFadeClass('fade-in');
+      setFadeClass("fade-in");
     }, 1000);
   };
 
   const goToMessageBoard = () => {
-    setFadeClass('fade-out');
+    setFadeClass("fade-out");
     setTimeout(() => {
       setShowBoard(true);
-      setFadeClass('fade-in');
+      setFadeClass("fade-in");
     }, 1000);
   };
 
   const goToDisclaimer = () => {
-    setFadeClass('fade-out');
+    setFadeClass("fade-out");
     setTimeout(() => {
       setShowDisclaimer(true);
-      setFadeClass('fade-in');
+      setFadeClass("fade-in");
     }, 1000);
   };
 
   const goBack = () => {
-    setFadeClass('fade-out');
+    setFadeClass("fade-out");
     setTimeout(() => {
       setShowDisclaimer(false);
-      setFadeClass('fade-in');
+      setFadeClass("fade-in");
     }, 1000);
   };
 
@@ -133,7 +113,7 @@ const App = () => {
         <div className="flex flex-col flex-grow items-center justify-center">
           <div
             className="text-xl p-4 font-schoolbell"
-            style={{ color: '#67B378' }}
+            style={{ color: "#67B378" }}
           >
             {timeLeft}
           </div>
