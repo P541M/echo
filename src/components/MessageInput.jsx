@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 // MessageInput component renders the form to add a new message
-const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
+const MessageInput = ({ addMessage, goToMessageBoard }) => {
   const [input, setInput] = useState("");
-
-  useEffect(() => {
-    const element = document.querySelector(".MessageInput");
-    if (element) {
-      element.classList.add(fadeClass);
-    }
-  }, [fadeClass]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,13 +11,11 @@ const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
   };
 
   const handleGoToMessageBoard = () => {
-    goToMessageBoard();
+    goToMessageBoard(true);
   };
 
   return (
-    <div
-      className={`transition-opacity duration-1000 ease-in-out w-full flex flex-col items-center ${fadeClass} bg-background`}
-    >
+    <div className="w-full flex flex-col items-center bg-background">
       <h1 className="text-5xl font-bold mb-4 text-text">Echo</h1>
       <p className="mb-6 text-text">
         <i>Your Voice, Your Echo</i>
@@ -41,7 +32,6 @@ const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
           className="p-2 border border-gray-300 rounded-xl mb-4 w-3/3 max-w-md text-background"
           required
         />
-
         <div className="flex space-x-2">
           <button
             type="submit"
@@ -49,7 +39,6 @@ const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
           >
             Post
           </button>
-
           <button
             type="button"
             onClick={handleGoToMessageBoard}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LandingPage from "./components/LandingPage";
+import SplashScreen from "./components/SplashScreen";
 import MessageInput from "./components/MessageInput";
 import MessageBoard from "./components/MessageBoard";
 import Disclaimer from "./components/Disclaimer";
@@ -12,8 +12,7 @@ import "./index.css";
 const App = () => {
   const [messages, setMessages] = useState([]);
   const [showBoard, setShowBoard] = useState(false);
-  const [fadeClass, setFadeClass] = useState("fade-in");
-  const [showLanding, setShowLanding] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
 
   useEffect(() => {
@@ -55,11 +54,7 @@ const App = () => {
   const addMessage = async (message) => {
     try {
       await axios.post("http://localhost:5000/add-message", { message });
-      setFadeClass("fade-out");
-      setTimeout(() => {
-        setShowBoard(true);
-        setFadeClass("fade-in");
-      }, 1000);
+      setShowBoard(true);
     } catch (error) {
       console.error("Failed to add message:", error);
     }
@@ -101,49 +96,21 @@ const App = () => {
   };
 
   const showMessageInput = () => {
-    setFadeClass("fade-out");
-    setTimeout(() => {
-      setShowBoard(false);
-      setFadeClass("fade-in");
-    }, 1000);
-  };
-
-  const handleLandingFadeComplete = () => {
-    setFadeClass("fade-out");
-    setTimeout(() => {
-      setShowLanding(false);
-      setFadeClass("fade-in");
-    }, 1000);
-  };
-
-  const goToMessageBoard = () => {
-    setFadeClass("fade-out");
-    setTimeout(() => {
-      setShowBoard(true);
-      setFadeClass("fade-in");
-    }, 1000);
+    setShowBoard(false);
   };
 
   const goToDisclaimer = () => {
-    setFadeClass("fade-out");
-    setTimeout(() => {
-      setShowDisclaimer(true);
-      setFadeClass("fade-in");
-    }, 1000);
+    setShowDisclaimer(true);
   };
 
   const goBack = () => {
-    setFadeClass("fade-out");
-    setTimeout(() => {
-      setShowDisclaimer(false);
-      setFadeClass("fade-in");
-    }, 1000);
+    setShowDisclaimer(false);
   };
 
   return (
     <>
-      {showLanding ? (
-        <LandingPage onFadeComplete={handleLandingFadeComplete} />
+      {showSplash ? (
+        <SplashScreen onFadeComplete={() => setShowSplash(false)} />
       ) : showDisclaimer ? (
         <Disclaimer goBack={goBack} />
       ) : (
@@ -155,18 +122,16 @@ const App = () => {
               showMessageInput={showMessageInput}
               likeMessage={likeMessage}
               userId={localStorage.getItem("userId") || generateUserId()}
-              fadeClass={fadeClass}
             />
           ) : (
             <MessageInput
               addMessage={addMessage}
-              goToMessageBoard={goToMessageBoard}
-              fadeClass={fadeClass}
+              goToMessageBoard={setShowBoard}
             />
           )}
         </>
       )}
-      {!showDisclaimer && !showLanding && (
+      {!showDisclaimer && !showSplash && (
         <Footer goToDisclaimer={goToDisclaimer} />
       )}
     </>

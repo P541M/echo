@@ -34,8 +34,8 @@ const Timer = () => {
 
   return (
     <div className="text-center">
-      <h2 className="text-2xl text-text">Next reset in:</h2>
-      <div className="text-xl text-text">
+      <h2 className="text-2xl font-nunito">Next reset in:</h2>
+      <div className="text-xl font-mono">
         {timeLeft.hours !== undefined ? (
           <span>
             {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s

@@ -2,17 +2,9 @@ import React from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 // MessageBoard component renders the list of messages and handles likes
-const MessageBoard = ({
-  messages,
-  showMessageInput,
-  likeMessage,
-  userId,
-  fadeClass,
-}) => {
+const MessageBoard = ({ messages, showMessageInput, likeMessage, userId }) => {
   return (
-    <div
-      className={`transition-opacity mb-4 duration-1000 ease-in-out w-full ${fadeClass}`}
-    >
+    <div className="mb-4 w-full">
       <h2 className="text-5xl font-bold mb-4 text-center text-text">Echo</h2>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 justify-center text-text">
