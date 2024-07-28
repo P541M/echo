@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SplashScreen from "./components/SplashScreen";
-import MessageInput from "./components/MessageInput";
+import InputPage from "./components/InputPage";
 import MessageBoard from "./components/MessageBoard";
-import Disclaimer from "./components/Disclaimer";
-import Timer from "./components/Timer";
-import Footer from "./components/Footer";
 import "./index.css";
 
 // App component handles application state and routes
@@ -37,12 +34,8 @@ const App = () => {
         };
 
         monitorMessages();
-
         const intervalId = setInterval(monitorMessages, 5000);
-
-        return () => {
-          clearInterval(intervalId);
-        };
+        return () => clearInterval(intervalId);
       } catch (error) {
         console.error("Failed to initialize Firebase:", error);
       }
@@ -95,35 +88,27 @@ const App = () => {
     return userId;
   };
 
-  const showMessageInput = () => {
-    setShowBoard(false);
-  };
-
-  const goToDisclaimer = () => {
-    setShowDisclaimer(true);
-  };
-
-  const goBack = () => {
-    setShowDisclaimer(false);
-  };
-
   return (
     <>
-      <Timer />
-      {showBoard ? (
-        <MessageBoard
-          messages={messages}
-          showMessageInput={showMessageInput}
-          likeMessage={likeMessage}
-          userId={localStorage.getItem("userId") || generateUserId()}
-        />
-      ) : (
-        <MessageInput addMessage={addMessage} goToMessageBoard={setShowBoard} />
-      )}
-      {showDisclaimer && <Disclaimer goBack={goBack} />}
-      <Footer goToDisclaimer={goToDisclaimer} />
       {showSplash && (
         <SplashScreen onFadeComplete={() => setShowSplash(false)} />
+      )}
+      {!showSplash && showBoard ? (
+        <MessageBoard
+          messages={messages}
+          showMessageInput={() => setShowBoard(false)}
+          likeMessage={likeMessage}
+          userId={localStorage.getItem("userId") || generateUserId()}
+          goToDisclaimer={() => setShowDisclaimer(true)}
+        />
+      ) : (
+        <InputPage
+          addMessage={addMessage}
+          goToMessageBoard={setShowBoard}
+          showDisclaimer={showDisclaimer}
+          goToDisclaimer={() => setShowDisclaimer(true)}
+          goBack={() => setShowDisclaimer(false)}
+        />
       )}
     </>
   );
