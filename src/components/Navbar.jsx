@@ -56,7 +56,7 @@ const Navbar = ({ goToSection }) => {
       <div
         className={`${
           nav ? "block" : "hidden"
-        } fixed w-full z-20 bg-backgroundDark text-text lg:hidden`}
+        } fixed w-full z-20 bg-background text-text lg:hidden`}
       >
         <ul className="font-semibold text-center my-8">
           <li className="my-3 nav-link relative">
