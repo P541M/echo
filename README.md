@@ -1,8 +1,7 @@
-# FreshStart
-FreshStart is a simple React.js web application that allows users to type and share messages that are automatically wiped at the end of each day. It offers a fresh start every morning, ensuring that no message persists beyond 24 hours. Perfect for sharing thoughts, ideas, or daily reflections with the assurance of daily privacy.
+# Echo
 
-## Notes
-Still trying to figure out how to deploy
+Echo is a unique React.js web application that empowers users to express their thoughts freely. Every message shared on Echo echoes throughout the day and then disappears at midnight, providing a fresh canvas each day. Echo ensures your voice is heard, yet transient, fostering a space for authentic and ephemeral expression.
 
-## Contact
-Psalm Eleazar G. Videna - [Email](mailto:videna.psalmeleazar@gmail.com) - [LinkedIn](https://www.linkedin.com/in/pevidena/) - [GitHub](https://github.com/P541M)
+## Let’s Get in Touch!
+- [Email](mailto:videna.psalmeleazar@gmail.com)
+- [LinkedIn](https://www.linkedin.com/in/pevidena/)
