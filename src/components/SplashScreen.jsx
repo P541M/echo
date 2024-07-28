@@ -8,8 +8,8 @@ const SplashScreen = ({ onFadeComplete }) => {
       setIsVisible(false);
       setTimeout(() => {
         onFadeComplete();
-      }, 1000); // Fade-out transition
-    }, 1500); // 1.5 seconds for display
+      }, 1000);
+    }, 2000);
 
     return () => clearTimeout(timeoutId);
   }, [onFadeComplete]);

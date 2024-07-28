@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SplashScreen from "./components/SplashScreen";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import HowItWorks from "./components/HowItWorks";
+import MessagesSection from "./components/MessagesSection";
 import InputPage from "./components/InputPage";
 import MessageBoard from "./components/MessageBoard";
 import "./index.css";
@@ -102,13 +107,24 @@ const App = () => {
           goToDisclaimer={() => setShowDisclaimer(true)}
         />
       ) : (
-        <InputPage
-          addMessage={addMessage}
-          goToMessageBoard={setShowBoard}
-          showDisclaimer={showDisclaimer}
-          goToDisclaimer={() => setShowDisclaimer(true)}
-          goBack={() => setShowDisclaimer(false)}
-        />
+        <div className="w-full h-full bg-background text-text">
+          <Navbar />
+          <Hero />
+          <About />
+          <HowItWorks />
+          <MessagesSection
+            messages={messages}
+            likeMessage={likeMessage}
+            userId={localStorage.getItem("userId") || generateUserId()}
+          />
+          <InputPage
+            addMessage={addMessage}
+            goToMessageBoard={setShowBoard}
+            showDisclaimer={showDisclaimer}
+            goToDisclaimer={() => setShowDisclaimer(true)}
+            goBack={() => setShowDisclaimer(false)}
+          />
+        </div>
       )}
     </>
   );
