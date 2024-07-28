@@ -1,6 +1,13 @@
 import React from "react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"; // Import heart icons from react-icons
 
-const MessageBoard = ({ messages, showMessageInput, fadeClass }) => {
+const MessageBoard = ({
+  messages,
+  showMessageInput,
+  likeMessage,
+  userId,
+  fadeClass,
+}) => {
   return (
     <div
       className={`MessageBoard transition-opacity mb-4 duration-1000 ease-in-out w-full ${fadeClass}`}
@@ -13,15 +20,28 @@ const MessageBoard = ({ messages, showMessageInput, fadeClass }) => {
           {messages
             .slice()
             .reverse()
-            .map((message, index) => (
+            .map((message) => (
               <div
-                key={index}
+                key={message.id}
                 className="bg-[#FEFCFB] p-4 rounded-xl shadow-md font-schoolbell"
               >
                 <p>{message.text}</p>
                 <p className="text-xs text-gray-500 font-nunito">
                   {message.timestamp}
                 </p>
+                <div className="flex items-center">
+                  <button
+                    onClick={() => likeMessage(message.id)}
+                    className="text-red-500 mr-2"
+                  >
+                    {message.likedBy && message.likedBy.includes(userId) ? (
+                      <AiFillHeart />
+                    ) : (
+                      <AiOutlineHeart />
+                    )}
+                  </button>
+                  <span>{message.likes}</span>
+                </div>
               </div>
             ))}
         </div>

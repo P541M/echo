@@ -26,7 +26,9 @@ const App = () => {
           try {
             const response = await axios.get("http://localhost:5000/messages");
             const data = response.data;
-            const loadedMessages = data ? Object.values(data) : [];
+            const loadedMessages = data
+              ? Object.values(data).map((msg, key) => ({ ...msg, id: key }))
+              : [];
             setMessages(loadedMessages);
           } catch (error) {
             console.error("Failed to fetch messages:", error);
@@ -59,6 +61,31 @@ const App = () => {
     } catch (error) {
       console.error("Failed to add message:", error);
     }
+  };
+
+  const likeMessage = async (messageId) => {
+    const userId = localStorage.getItem("userId") || generateUserId();
+    try {
+      await axios.post("http://localhost:5000/like-message", {
+        messageId,
+        userId,
+      });
+      setMessages((prevMessages) =>
+        prevMessages.map((msg) =>
+          msg.id === messageId ? { ...msg, likes: msg.likes + 1 } : msg
+        )
+      );
+    } catch (error) {
+      console.error("Failed to like message:", error);
+    }
+  };
+
+  const generateUserId = () => {
+    const userId = `user-${Date.now()}-${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
+    localStorage.setItem("userId", userId);
+    return userId;
   };
 
   const showMessageInput = () => {
@@ -113,7 +140,7 @@ const App = () => {
         <Disclaimer goBack={goBack} />
       ) : (
         <div className="flex flex-col flex-grow items-center justify-center">
-          <Timer /> {/* Include the Timer component here */}
+          <Timer />
           {!showBoard ? (
             <MessageInput
               addMessage={addMessage}
@@ -124,6 +151,8 @@ const App = () => {
             <MessageBoard
               messages={messages}
               showMessageInput={showMessageInput}
+              likeMessage={likeMessage}
+              userId={localStorage.getItem("userId") || generateUserId()}
               fadeClass={fadeClass}
             />
           )}
