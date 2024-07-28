@@ -1,7 +1,6 @@
 import React from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-// MessageBoardPage component combines MessageBoard and Footer
 const MessageBoardPage = ({
   messages,
   showMessageInput,
