@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage";
 import MessageInput from "./components/MessageInput";
 import MessageBoard from "./components/MessageBoard";
 import Disclaimer from "./components/Disclaimer";
+import Timer from "./components/Timer";
 import "./index.css";
 
 const App = () => {
@@ -112,6 +113,7 @@ const App = () => {
         <Disclaimer goBack={goBack} />
       ) : (
         <div className="flex flex-col flex-grow items-center justify-center">
+          <Timer /> {/* Include the Timer component here */}
           {!showBoard ? (
             <MessageInput
               addMessage={addMessage}
