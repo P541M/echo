@@ -109,30 +109,21 @@ const App = () => {
 
   return (
     <>
-      {showSplash ? (
-        <SplashScreen onFadeComplete={() => setShowSplash(false)} />
-      ) : showDisclaimer ? (
-        <Disclaimer goBack={goBack} />
+      <Timer />
+      {showBoard ? (
+        <MessageBoard
+          messages={messages}
+          showMessageInput={showMessageInput}
+          likeMessage={likeMessage}
+          userId={localStorage.getItem("userId") || generateUserId()}
+        />
       ) : (
-        <>
-          <Timer />
-          {showBoard ? (
-            <MessageBoard
-              messages={messages}
-              showMessageInput={showMessageInput}
-              likeMessage={likeMessage}
-              userId={localStorage.getItem("userId") || generateUserId()}
-            />
-          ) : (
-            <MessageInput
-              addMessage={addMessage}
-              goToMessageBoard={setShowBoard}
-            />
-          )}
-        </>
+        <MessageInput addMessage={addMessage} goToMessageBoard={setShowBoard} />
       )}
-      {!showDisclaimer && !showSplash && (
-        <Footer goToDisclaimer={goToDisclaimer} />
+      {showDisclaimer && <Disclaimer goBack={goBack} />}
+      <Footer goToDisclaimer={goToDisclaimer} />
+      {showSplash && (
+        <SplashScreen onFadeComplete={() => setShowSplash(false)} />
       )}
     </>
   );
