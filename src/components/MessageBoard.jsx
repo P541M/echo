@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
+// MessageBoard component renders the list of messages and handles likes
 const MessageBoard = ({
   messages,
   showMessageInput,
@@ -10,7 +11,7 @@ const MessageBoard = ({
 }) => {
   return (
     <div
-      className={`MessageBoard transition-opacity mb-4 duration-1000 ease-in-out w-full ${fadeClass}`}
+      className={`transition-opacity mb-4 duration-1000 ease-in-out w-full ${fadeClass}`}
     >
       <h2 className="text-5xl font-bold mb-4 font-schoolbell text-center text-[#120E09]">
         FreshStart

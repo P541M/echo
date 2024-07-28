@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+// Timer component shows countdown to the next reset at midnight ET
 const Timer = () => {
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -32,9 +33,9 @@ const Timer = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Next reset in:</h2>
-      <div>
+    <div className="text-center">
+      <h2 className="text-2xl font-nunito">Next reset in:</h2>
+      <div className="text-xl font-mono">
         {timeLeft.hours !== undefined ? (
           <span>
             {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s

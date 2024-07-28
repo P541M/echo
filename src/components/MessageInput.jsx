@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+// MessageInput component renders the form to add a new message
 const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
   const [input, setInput] = useState("");
 
@@ -22,7 +23,7 @@ const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
 
   return (
     <div
-      className={`MessageInput transition-opacity duration-1000 ease-in-out w-full flex flex-col items-center ${fadeClass}`}
+      className={`transition-opacity duration-1000 ease-in-out w-full flex flex-col items-center ${fadeClass}`}
     >
       <h1 className="text-5xl font-bold mb-4 font-schoolbell text-[#120E09]">
         FreshStart

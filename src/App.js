@@ -5,8 +5,10 @@ import MessageInput from "./components/MessageInput";
 import MessageBoard from "./components/MessageBoard";
 import Disclaimer from "./components/Disclaimer";
 import Timer from "./components/Timer";
+import Footer from "./components/Footer";
 import "./index.css";
 
+// App component handles application state and routes
 const App = () => {
   const [messages, setMessages] = useState([]);
   const [showBoard, setShowBoard] = useState(false);
@@ -139,25 +141,15 @@ const App = () => {
   };
 
   return (
-    <div
-      className={`min-h-screen flex flex-col bg-gray-100 transition-opacity duration-1000 ${fadeClass}`}
-    >
+    <>
       {showLanding ? (
-        <div className="flex flex-col flex-grow items-center justify-center">
-          <LandingPage onFadeComplete={handleLandingFadeComplete} />
-        </div>
+        <LandingPage onFadeComplete={handleLandingFadeComplete} />
       ) : showDisclaimer ? (
         <Disclaimer goBack={goBack} />
       ) : (
-        <div className="flex flex-col flex-grow items-center justify-center">
+        <>
           <Timer />
-          {!showBoard ? (
-            <MessageInput
-              addMessage={addMessage}
-              goToMessageBoard={goToMessageBoard}
-              fadeClass={fadeClass}
-            />
-          ) : (
+          {showBoard ? (
             <MessageBoard
               messages={messages}
               showMessageInput={showMessageInput}
@@ -165,20 +157,19 @@ const App = () => {
               userId={localStorage.getItem("userId") || generateUserId()}
               fadeClass={fadeClass}
             />
+          ) : (
+            <MessageInput
+              addMessage={addMessage}
+              goToMessageBoard={goToMessageBoard}
+              fadeClass={fadeClass}
+            />
           )}
-        </div>
+        </>
       )}
       {!showDisclaimer && !showLanding && (
-        <footer className="w-full py-4 border-t border-gray-300 mt-auto flex justify-center bg-white">
-          <button
-            onClick={goToDisclaimer}
-            className="px-4 py-2 border border-gray-300 text-gray-600 rounded transition font-nunito hover:bg-gray-100"
-          >
-            View Disclaimer
-          </button>
-        </footer>
+        <Footer goToDisclaimer={goToDisclaimer} />
       )}
-    </div>
+    </>
   );
 };
 

@@ -1,8 +1,9 @@
 import React from "react";
 
+// Disclaimer component renders the disclaimer text and a go-back button
 const Disclaimer = ({ goBack }) => {
   return (
-    <div className="Disclaimer w-full h-screen flex flex-col items-center justify-center p-4 bg-gray-100">
+    <div className="w-full h-screen flex flex-col items-center justify-center p-4 bg-gray-100">
       <div className="max-w-3xl bg-[#FEFCFB] p-8 rounded-xl shadow-md">
         <h1 className="text-4xl font-bold mb-4 text-center font-schoolbell">
           Disclaimer
