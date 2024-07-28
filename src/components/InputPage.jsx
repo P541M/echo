@@ -40,13 +40,13 @@ const InputPage = ({ addMessage, goToMessageBoard }) => {
   }
 
   return (
-    <div className="w-full h-screen flex flex-col items-center bg-background text-text">
+    <div className="w-full h-screen flex flex-col items-center justify-center bg-background text-text">
       {showDisclaimer ? (
         <div className="w-full h-screen flex flex-col items-center justify-center p-4 bg-background">
           <div className="max-w-3xl bg-primary p-8 rounded-xl shadow-lg">
             <h1 className="text-4xl font-bold mb-4 text-center">Disclaimer</h1>
             <p className="mb-4 text-lg">
-              This website is a free roam website where users can type whatever
+              This website is a free roam website where users can post whatever
               they want. As such, the website owner and administrators are not
               held liable for any content posted by users. By using this
               website, you agree that the{" "}
@@ -67,10 +67,10 @@ const InputPage = ({ addMessage, goToMessageBoard }) => {
           </div>
         </div>
       ) : (
-        <>
-          <div className="text-center my-8">
-            <h2 className="text-2xl font-nunito">Next reset in:</h2>
-            <div className="text-xl font-mono mt-2">
+        <div className="w-full flex flex-col items-center justify-center text-center">
+          <div className="mb-8">
+            <h2 className="text-2xl font-nunito">Echoes in:</h2>
+            <div className="text-xl mt-2">
               {timeLeft.hours !== undefined ? (
                 <span>
                   {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
@@ -82,7 +82,6 @@ const InputPage = ({ addMessage, goToMessageBoard }) => {
           </div>
           <div className="w-full flex flex-col items-center">
             <h1 className="text-5xl font-bold mb-4">Echo</h1>
-            <p className="mb-6 text-lg italic">Your Voice, Your Echo</p>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -115,7 +114,7 @@ const InputPage = ({ addMessage, goToMessageBoard }) => {
               </div>
             </form>
           </div>
-          <footer className="w-full py-4 border-t border-gray-300 mt-auto flex justify-center bg-background">
+          <footer className="w-full py-4 border-t border-gray-300 flex justify-center bg-background">
             <button
               onClick={goToDisclaimer}
               className="px-4 py-2 border border-gray-300 rounded transition hover:bg-secondary text-background"
@@ -123,7 +122,7 @@ const InputPage = ({ addMessage, goToMessageBoard }) => {
               View Disclaimer
             </button>
           </footer>
-        </>
+        </div>
       )}
     </div>
   );
