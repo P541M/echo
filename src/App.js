@@ -27,7 +27,7 @@ const App = () => {
             const response = await axios.get("http://localhost:5000/messages");
             const data = response.data;
             const loadedMessages = data
-              ? Object.values(data).map((msg, key) => ({ ...msg, id: key }))
+              ? Object.keys(data).map((key) => ({ ...data[key], id: key }))
               : [];
             setMessages(loadedMessages);
           } catch (error) {
@@ -72,7 +72,17 @@ const App = () => {
       });
       setMessages((prevMessages) =>
         prevMessages.map((msg) =>
-          msg.id === messageId ? { ...msg, likes: msg.likes + 1 } : msg
+          msg.id === messageId
+            ? {
+                ...msg,
+                likes: msg.likedBy.includes(userId)
+                  ? msg.likes - 1
+                  : msg.likes + 1,
+                likedBy: msg.likedBy.includes(userId)
+                  ? msg.likedBy.filter((id) => id !== userId)
+                  : [...msg.likedBy, userId],
+              }
+            : msg
         )
       );
     } catch (error) {

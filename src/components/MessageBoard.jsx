@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"; // Import heart icons from react-icons
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const MessageBoard = ({
   messages,
@@ -40,7 +40,7 @@ const MessageBoard = ({
                       <AiOutlineHeart />
                     )}
                   </button>
-                  <span>{message.likes}</span>
+                  <span>{message.likes || 0}</span>
                 </div>
               </div>
             ))}
