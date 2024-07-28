@@ -11,12 +11,10 @@ const LandingPage = ({ onFadeComplete }) => {
   }, [onFadeComplete]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center transition-opacity duration-500 fade-in">
+    <div className="w-full h-full flex items-center justify-center transition-opacity duration-500 fade-in bg-background">
       <div className="flex flex-col items-center">
-        <p className="font-nunito text-xl pb-3 text-[#120E09]">Welcome to</p>
-        <h1 className="text-5xl font-bold font-schoolbell text-[#120E09]">
-          FreshStart
-        </h1>
+        <p className="text-xl pb-3 text-text">Welcome to</p>
+        <h1 className="text-5xl font-bold text-text">FreshStart</h1>
       </div>
     </div>
   );

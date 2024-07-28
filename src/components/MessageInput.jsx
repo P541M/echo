@@ -23,12 +23,10 @@ const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
 
   return (
     <div
-      className={`transition-opacity duration-1000 ease-in-out w-full flex flex-col items-center ${fadeClass}`}
+      className={`transition-opacity duration-1000 ease-in-out w-full flex flex-col items-center ${fadeClass} bg-background`}
     >
-      <h1 className="text-5xl font-bold mb-4 font-schoolbell text-[#120E09]">
-        FreshStart
-      </h1>
-      <p className="mb-6 font-nunito text-[#120E09]">
+      <h1 className="text-5xl font-bold mb-4 text-text">FreshStart</h1>
+      <p className="mb-6 text-text">
         <i>Start Fresh Every Day.</i>
       </p>
       <form
@@ -40,14 +38,14 @@ const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Speak your mind..."
-          className="p-2 border border-gray-300 rounded-xl mb-4 w-3/3 max-w-md font-schoolbell text-[#120E09]"
+          className="p-2 border border-gray-300 rounded-xl mb-4 w-3/3 max-w-md text-background"
           required
         />
 
         <div className="flex space-x-2">
           <button
             type="submit"
-            className="px-4 py-2 bg-[#ADD8A3] text-[#FEFCFB] rounded hover:bg-[#8DB383] transition font-nunito"
+            className="px-4 py-2 bg-accent text-background rounded hover:bg-secondary transition"
           >
             Post
           </button>
@@ -55,7 +53,7 @@ const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
           <button
             type="button"
             onClick={handleGoToMessageBoard}
-            className="px-4 py-2 bg-[#7BC78C] text-[#FEFCFB] rounded hover:bg-[#67B378] transition font-nunito"
+            className="px-4 py-2 bg-secondary text-background rounded hover:bg-accent transition"
           >
             Messages
           </button>
