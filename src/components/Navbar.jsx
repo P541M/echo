@@ -19,10 +19,10 @@ const Navbar = ({ goToSection }) => {
 
   return (
     <div className="z-[1000] fixed left-0 right-0 h-20 bg-background text-text">
-      <div className="flex justify-between items-center h-full px-8">
+      <div className="flex justify-between items-center h-full px-8 relative">
         <div
           onClick={() => goToSection("home")}
-          className="logo-container nav-link cursor-pointer"
+          className="logo-container nav-link cursor-pointer absolute left-1/2 transform -translate-x-1/2 lg:static lg:transform-none"
         >
           <span className="text-2xl font-bold">Echo</span>
         </div>
@@ -55,10 +55,10 @@ const Navbar = ({ goToSection }) => {
 
       <div
         className={`${
-          nav ? "navbar-small-screen active" : "navbar-small-screen"
-        } fixed top-20 left-0 w-full z-20 bg-background text-text lg:hidden`}
+          nav ? "block" : "hidden"
+        } fixed w-full z-20 bg-backgroundDark text-text lg:hidden`}
       >
-        <ul className="font-semibold text-center">
+        <ul className="font-semibold text-center my-8">
           <li className="my-3 nav-link relative">
             <a
               href="#about"
