@@ -18,7 +18,7 @@ const Navbar = ({ goToSection }) => {
   }, []);
 
   return (
-    <div className="z-[1000] fixed left-0 right-0 h-20 bg-background text-text">
+    <div className="z-[1000] fixed left-0 right-0 h-20 bg-background/50 backdrop-blur-md text-text">
       <div className="flex justify-between items-center h-full px-8 relative">
         <div
           onClick={() => goToSection("home")}
@@ -56,9 +56,9 @@ const Navbar = ({ goToSection }) => {
       <div
         className={`${
           nav ? "block" : "hidden"
-        } fixed w-full z-20 bg-background text-text lg:hidden`}
+        } fixed top-20 left-0 w-full z-20 bg-background/50 backdrop-blur-md text-text lg:hidden`}
       >
-        <ul className="font-semibold text-center my-8">
+        <ul className="font-semibold text-center backdrop-blur-md">
           <li className="my-3 nav-link relative">
             <a
               href="#about"

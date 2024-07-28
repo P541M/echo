@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <div
       id="home"
-      className="w-full h-[600px] flex flex-col items-center justify-center text-text pt-20"
+      className="w-full h-[600px] flex flex-col items-center justify-center text-text"
       style={{ background: "linear-gradient(135deg, #080a1d, #8e94df)" }}
     >
       <div className="relative z-10 text-center p-4">
