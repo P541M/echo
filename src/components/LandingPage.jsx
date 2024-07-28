@@ -1,20 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-// LandingPage component renders the welcome screen and triggers fade complete after a timeout
-const LandingPage = ({ onFadeComplete }) => {
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      onFadeComplete();
-    }, 700);
-
-    return () => clearTimeout(timeoutId);
-  }, [onFadeComplete]);
-
+// LandingPage component renders the welcome screen
+const LandingPage = () => {
   return (
-    <div className="w-full h-full flex items-center justify-center transition-opacity duration-500 fade-in bg-background">
+    <div className="w-full h-screen flex items-center justify-center bg-background">
       <div className="flex flex-col items-center">
-        <p className="text-xl pb-3 text-text">Welcome to</p>
-        <h1 className="text-5xl font-bold text-text">FreshStart</h1>
+        <h1 className="text-5xl font-bold text-text">Echo</h1>
+        <p className="text-xl pt-3 text-text">Your Voice, Your Echo</p>
       </div>
     </div>
   );

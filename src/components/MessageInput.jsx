@@ -25,9 +25,9 @@ const MessageInput = ({ addMessage, goToMessageBoard, fadeClass }) => {
     <div
       className={`transition-opacity duration-1000 ease-in-out w-full flex flex-col items-center ${fadeClass} bg-background`}
     >
-      <h1 className="text-5xl font-bold mb-4 text-text">FreshStart</h1>
+      <h1 className="text-5xl font-bold mb-4 text-text">Echo</h1>
       <p className="mb-6 text-text">
-        <i>Start Fresh Every Day.</i>
+        <i>Your Voice, Your Echo</i>
       </p>
       <form
         onSubmit={handleSubmit}
