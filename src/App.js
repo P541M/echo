@@ -10,33 +10,34 @@ const App = () => {
   const [messages, setMessages] = useState([]);
   const [showBoard, setShowBoard] = useState(false);
   const [fadeClass, setFadeClass] = useState("fade-in");
-  const [timeLeft, setTimeLeft] = useState("");
   const [showLanding, setShowLanding] = useState(true);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
 
   useEffect(() => {
     const initFirebase = async () => {
       try {
-        const response = await axios.get("/initialize-firebase");
-        const { database, messagesRef, intervalId } = response.data;
-        // Mock functions as placeholders for Firebase SDK functions
-        const mockOnValue = (ref, callback) => {
-          // Simulate Firebase onValue
-          callback({ val: () => ({}) });
-        };
-        const mockOff = (ref) => {
-          // Simulate Firebase off
+        const response = await axios.get(
+          "http://localhost:5000/initialize-firebase"
+        );
+        console.log(response.data.message);
+
+        const monitorMessages = async () => {
+          try {
+            const response = await axios.get("http://localhost:5000/messages");
+            const data = response.data;
+            const loadedMessages = data ? Object.values(data) : [];
+            setMessages(loadedMessages);
+          } catch (error) {
+            console.error("Failed to fetch messages:", error);
+          }
         };
 
-        mockOnValue(messagesRef, (snapshot) => {
-          const data = snapshot.val();
-          const loadedMessages = data ? Object.values(data) : [];
-          setMessages(loadedMessages);
-        });
+        monitorMessages();
+
+        const intervalId = setInterval(monitorMessages, 5000);
 
         return () => {
           clearInterval(intervalId);
-          mockOff(messagesRef);
         };
       } catch (error) {
         console.error("Failed to initialize Firebase:", error);
@@ -48,7 +49,7 @@ const App = () => {
 
   const addMessage = async (message) => {
     try {
-      await axios.post("/add-message", { message });
+      await axios.post("http://localhost:5000/add-message", { message });
       setFadeClass("fade-out");
       setTimeout(() => {
         setShowBoard(true);
@@ -111,12 +112,6 @@ const App = () => {
         <Disclaimer goBack={goBack} />
       ) : (
         <div className="flex flex-col flex-grow items-center justify-center">
-          <div
-            className="text-xl p-4 font-schoolbell"
-            style={{ color: "#67B378" }}
-          >
-            {timeLeft}
-          </div>
           {!showBoard ? (
             <MessageInput
               addMessage={addMessage}
