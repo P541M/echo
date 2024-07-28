@@ -1,6 +1,6 @@
 {
-  "homepage": "http://P541M.github.io/fresh-start",
-  "name": "fresh-start",
+  "homepage": "http://P541M.github.io/echo",
+  "name": "echo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
