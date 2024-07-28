@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-const MessageBoardPage = ({
+const MessageBoard = ({
   messages,
   showMessageInput,
   likeMessage,
@@ -9,7 +9,7 @@ const MessageBoardPage = ({
   goToDisclaimer,
 }) => {
   return (
-    <div className="w-full h-screen flex flex-col items-center bg-background">
+    <div className="w-full h-screen flex flex-col items-center bg-background text-text">
       <div className="mb-4 w-full">
         <h2 className="text-5xl font-bold mb-4 text-center text-text">Echo</h2>
         <div className="container mx-auto px-4">
@@ -62,4 +62,4 @@ const MessageBoardPage = ({
   );
 };
 
-export default MessageBoardPage;
+export default MessageBoard;

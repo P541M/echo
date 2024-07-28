@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { HiSun, HiMoon } from "react-icons/hi";
 
-const Navbar = () => {
+const Navbar = ({ goToSection }) => {
   const [nav, setNav] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
 
@@ -38,23 +38,26 @@ const Navbar = () => {
 
   return (
     <div className="z-50 fixed top-0 left-0 right-0 flex justify-between items-center max-w-auto h-20 px-4 text-l bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text navbar">
-      <a href="#home" className="p-5 lg:ml-0 mx-auto nav-link">
+      <a
+        href="#home"
+        className="p-5 lg:ml-0 mx-auto nav-link"
+        onClick={() => goToSection("home")}
+      >
         <span>Echo</span>
       </a>
-
       <ul className="hidden lg:flex font-semibold items-center">
         <li className="p-5 text nav-link">
-          <a href="#about">
+          <a href="#about" onClick={() => goToSection("about")}>
             <span>About</span>
           </a>
         </li>
         <li className="p-5 nav-link">
-          <a href="#post-message">
+          <a href="#post-message" onClick={() => goToSection("post-message")}>
             <span>Post a Message</span>
           </a>
         </li>
         <li className="p-5 nav-link">
-          <a href="#messages">
+          <a href="#messages" onClick={() => goToSection("messages")}>
             <span>Message Board</span>
           </a>
         </li>
@@ -68,14 +71,12 @@ const Navbar = () => {
           </button>
         </li>
       </ul>
-
       <div
         onClick={handleNav}
         className="block lg:hidden fixed top-4 right-4 z-30"
       >
         {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
       </div>
-
       <div
         className={`navbar-small-screen ${
           nav ? "active" : ""
@@ -83,17 +84,35 @@ const Navbar = () => {
       >
         <ul className="font-semibold text-center">
           <li className="py-5 nav-link">
-            <a href="#about" onClick={handleNav}>
+            <a
+              href="#about"
+              onClick={() => {
+                handleNav();
+                goToSection("about");
+              }}
+            >
               <span>About</span>
             </a>
           </li>
           <li className="py-5 nav-link">
-            <a href="#post-message" onClick={handleNav}>
+            <a
+              href="#post-message"
+              onClick={() => {
+                handleNav();
+                goToSection("post-message");
+              }}
+            >
               <span>Post a Message</span>
             </a>
           </li>
           <li className="py-5 nav-link">
-            <a href="#messages" onClick={handleNav}>
+            <a
+              href="#messages"
+              onClick={() => {
+                handleNav();
+                goToSection("messages");
+              }}
+            >
               <span>Message Board</span>
             </a>
           </li>

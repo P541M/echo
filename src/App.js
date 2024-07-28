@@ -10,7 +10,6 @@ import InputPage from "./components/InputPage";
 import MessageBoard from "./components/MessageBoard";
 import "./index.css";
 
-// App component handles application state and routes
 const App = () => {
   const [messages, setMessages] = useState([]);
   const [showBoard, setShowBoard] = useState(false);
@@ -93,40 +92,48 @@ const App = () => {
     return userId;
   };
 
+  const goToSection = (sectionId) => {
+    document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <>
+    <div className="w-full h-full bg-background text-text">
       {showSplash && (
         <SplashScreen onFadeComplete={() => setShowSplash(false)} />
       )}
-      {!showSplash && showBoard ? (
-        <MessageBoard
-          messages={messages}
-          showMessageInput={() => setShowBoard(false)}
-          likeMessage={likeMessage}
-          userId={localStorage.getItem("userId") || generateUserId()}
-          goToDisclaimer={() => setShowDisclaimer(true)}
-        />
-      ) : (
-        <div className="w-full h-full bg-background text-text">
-          <Navbar />
-          <Hero />
-          <About />
-          <HowItWorks />
-          <MessagesSection
-            messages={messages}
-            likeMessage={likeMessage}
-            userId={localStorage.getItem("userId") || generateUserId()}
-          />
-          <InputPage
-            addMessage={addMessage}
-            goToMessageBoard={setShowBoard}
-            showDisclaimer={showDisclaimer}
-            goToDisclaimer={() => setShowDisclaimer(true)}
-            goBack={() => setShowDisclaimer(false)}
-          />
-        </div>
+      <Navbar goToSection={goToSection} />
+      {!showSplash && (
+        <>
+          {showBoard ? (
+            <MessageBoard
+              messages={messages}
+              showMessageInput={() => setShowBoard(false)}
+              likeMessage={likeMessage}
+              userId={localStorage.getItem("userId") || generateUserId()}
+              goToDisclaimer={() => setShowDisclaimer(true)}
+            />
+          ) : (
+            <>
+              <Hero />
+              <About />
+              <HowItWorks />
+              <MessagesSection
+                messages={messages}
+                likeMessage={likeMessage}
+                userId={localStorage.getItem("userId") || generateUserId()}
+              />
+              <InputPage
+                addMessage={addMessage}
+                goToMessageBoard={setShowBoard}
+                showDisclaimer={showDisclaimer}
+                goToDisclaimer={() => setShowDisclaimer(true)}
+                goBack={() => setShowDisclaimer(false)}
+              />
+            </>
+          )}
+        </>
       )}
-    </>
+    </div>
   );
 };
 

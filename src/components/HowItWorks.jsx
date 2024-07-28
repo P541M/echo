@@ -2,7 +2,10 @@ import React from "react";
 
 const HowItWorks = () => {
   return (
-    <div className="w-full flex flex-col items-center bg-background text-text py-8">
+    <div
+      id="how-it-works"
+      className="w-full flex flex-col items-center bg-background text-text py-8"
+    >
       <h2 className="text-4xl font-bold mb-4">How It Works</h2>
       <ul className="list-none text-center">
         <li className="mb-2">Say whatever you want</li>

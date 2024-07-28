@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-const InputPage = ({ addMessage, goToMessageBoard }) => {
-  const [showDisclaimer, setShowDisclaimer] = useState(false);
+const InputPage = ({
+  addMessage,
+  goToMessageBoard,
+  showDisclaimer,
+  goToDisclaimer,
+  goBack,
+}) => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-  const goToDisclaimer = () => setShowDisclaimer(true);
-  const goBack = () => setShowDisclaimer(false);
-
-  const handleGoToMessageBoard = () => {
-    goToMessageBoard(true);
-  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -40,7 +38,10 @@ const InputPage = ({ addMessage, goToMessageBoard }) => {
   }
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center bg-background text-text">
+    <div
+      id="post-message"
+      className="w-full flex flex-col items-center bg-background text-text py-8"
+    >
       {showDisclaimer ? (
         <div className="w-full h-screen flex flex-col items-center justify-center p-4 bg-background">
           <div className="max-w-3xl bg-primary p-8 rounded-xl shadow-lg">
@@ -67,9 +68,9 @@ const InputPage = ({ addMessage, goToMessageBoard }) => {
           </div>
         </div>
       ) : (
-        <div className="w-full flex flex-col items-center justify-center text-center">
-          <div className="mb-8">
-            <h2 className="text-2xl font-nunito">Echoes in:</h2>
+        <>
+          <div className="text-center mb-8">
+            <h2 className="text-2xl">Echoes in:</h2>
             <div className="text-xl mt-2">
               {timeLeft.hours !== undefined ? (
                 <span>
@@ -106,7 +107,7 @@ const InputPage = ({ addMessage, goToMessageBoard }) => {
                 </button>
                 <button
                   type="button"
-                  onClick={handleGoToMessageBoard}
+                  onClick={() => goToMessageBoard(true)}
                   className="px-4 py-2 bg-secondary rounded hover:bg-accent transition text-background"
                 >
                   Messages
@@ -122,7 +123,7 @@ const InputPage = ({ addMessage, goToMessageBoard }) => {
               View Disclaimer
             </button>
           </footer>
-        </div>
+        </>
       )}
     </div>
   );

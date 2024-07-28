@@ -8,15 +8,15 @@ const SplashScreen = ({ onFadeComplete }) => {
       setIsVisible(false);
       setTimeout(() => {
         onFadeComplete();
-      }, 1000);
-    }, 2000);
+      }, 1000); // This timeout is for the fade-out animation duration
+    }, 1500); // This timeout is for the initial display duration
 
     return () => clearTimeout(timeoutId);
   }, [onFadeComplete]);
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-full flex items-center justify-center bg-background transition-opacity duration-1000 ${
+      className={`z-[9999] fixed top-0 left-0 w-full h-full flex items-center justify-center bg-background transition-opacity duration-1000 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
