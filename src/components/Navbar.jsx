@@ -18,7 +18,7 @@ const Navbar = ({ goToSection }) => {
   }, []);
 
   return (
-    <div className="fixed left-0 right-0 z-[1000] h-20 bg-background/10 text-text backdrop-blur-md">
+    <div className="fixed left-0 right-0 top-0 z-[1000] h-20 bg-background/10 text-text backdrop-blur-md">
       <div className="relative flex h-full items-center justify-between px-14">
         <div
           onClick={() => goToSection("home")}

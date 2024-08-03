@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import useLocomotiveScroll from "./hooks/useLocomotiveScroll";
 import SplashScreen from "./components/SplashScreen";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -11,6 +12,8 @@ import MessageBoard from "./components/MessageBoard";
 import "./index.css";
 
 const App = () => {
+  useLocomotiveScroll(); // Initialize Locomotive Scroll
+
   const [messages, setMessages] = useState([]);
   const [showBoard, setShowBoard] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
@@ -20,7 +23,7 @@ const App = () => {
     const initFirebase = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/initialize-firebase"
+          "http://localhost:5000/initialize-firebase",
         );
         console.log(response.data.message);
 
@@ -76,8 +79,8 @@ const App = () => {
                   ? msg.likedBy.filter((id) => id !== userId)
                   : [...msg.likedBy, userId],
               }
-            : msg
-        )
+            : msg,
+        ),
       );
     } catch (error) {
       console.error("Failed to like message:", error);
@@ -85,9 +88,7 @@ const App = () => {
   };
 
   const generateUserId = () => {
-    const userId = `user-${Date.now()}-${Math.random()
-      .toString(36)
-      .substr(2, 9)}`;
+    const userId = `user-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     localStorage.setItem("userId", userId);
     return userId;
   };
@@ -97,7 +98,11 @@ const App = () => {
   };
 
   return (
-    <div className="w-full h-full bg-background text-text">
+    <div
+      id="main-container"
+      data-scroll-container
+      className="h-full w-full bg-background text-text"
+    >
       {showSplash && (
         <SplashScreen onFadeComplete={() => setShowSplash(false)} />
       )}
