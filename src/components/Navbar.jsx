@@ -58,7 +58,7 @@ const Navbar = ({ goToSection }) => {
           nav ? "flex" : "hidden"
         } fixed left-0 top-20 z-20 w-full flex-col items-center bg-background/10 text-text backdrop-blur-lg lg:hidden`}
       >
-        <ul className="flex-col text-center font-semibold">
+        <ul className="flex flex-col items-center text-center font-semibold">
           <li className="nav-link tracking-wide-transition relative mb-3">
             <a
               href="#about"
@@ -81,7 +81,7 @@ const Navbar = ({ goToSection }) => {
               Echoes
             </a>
           </li>
-          <li className="nav-link tracking-wide-transition relative my-3">
+          <li className="nav-link tracking-wide-transition relative mb-6 mt-3">
             <a
               href="#post-message"
               onClick={() => {
