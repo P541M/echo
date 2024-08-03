@@ -29,3 +29,57 @@ html {
 html::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
+
+/* Wavy gradient animation */
+@keyframes gradientWave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-bg {
+  background: linear-gradient(45deg, #5e2b7f, #3f4fc4, #8e94df, #141628);
+  background-size: 200% 200%;
+  animation: gradientWave 15s ease infinite;
+}
+
+/* Add this to your existing index.css or a separate CSS file */
+.tracking-wide-transition {
+  position: relative;
+  display: inline-block;
+  transition: letter-spacing 0.3s ease;
+}
+
+.tracking-wide-transition a {
+  position: relative;
+  display: inline-block;
+  transition: letter-spacing 0.3s ease;
+  text-align: center;
+}
+
+.tracking-wide-transition:hover a {
+  letter-spacing: 0.1em;
+}
+
+/* Tracking-wide animation with pauses */
+@keyframes trackingWide {
+  0%,
+  30%,
+  100% {
+    letter-spacing: 0em;
+  }
+  40%,
+  70% {
+    letter-spacing: 0.1em;
+  }
+}
+
+.tracking-wide-animation {
+  animation: trackingWide 8s ease-in-out infinite;
+}

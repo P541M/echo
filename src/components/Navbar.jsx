@@ -28,17 +28,17 @@ const Navbar = ({ goToSection }) => {
         </div>
 
         <ul className="hidden items-center space-x-8 text-lg font-medium lg:flex">
-          <li className="nav-link transition hover:text-secondary">
+          <li className="nav-link tracking-wide-transition">
             <a href="#about" onClick={() => goToSection("about")}>
               About
             </a>
           </li>
-          <li className="nav-link transition hover:text-secondary">
+          <li className="nav-link tracking-wide-transition">
             <a href="#messages" onClick={() => goToSection("messages")}>
               Echoes
             </a>
           </li>
-          <li className="nav-link transition hover:text-secondary">
+          <li className="nav-link tracking-wide-transition">
             <a href="#post-message" onClick={() => goToSection("post-message")}>
               Make an Echo
             </a>
@@ -55,11 +55,11 @@ const Navbar = ({ goToSection }) => {
 
       <div
         className={`${
-          nav ? "block" : "hidden"
-        } fixed left-0 top-20 z-20 w-full bg-background/10 text-text backdrop-blur-md lg:hidden`}
+          nav ? "flex" : "hidden"
+        } fixed left-0 top-20 z-20 w-full flex-col items-center bg-background/10 text-text backdrop-blur-md lg:hidden`}
       >
-        <ul className="text-center font-semibold">
-          <li className="nav-link relative mb-3 transition hover:text-secondary">
+        <ul className="flex-col text-center font-semibold">
+          <li className="nav-link tracking-wide-transition relative mb-3">
             <a
               href="#about"
               onClick={() => {
@@ -70,7 +70,7 @@ const Navbar = ({ goToSection }) => {
               About
             </a>
           </li>
-          <li className="nav-link relative my-3 transition hover:text-secondary">
+          <li className="nav-link tracking-wide-transition relative my-3">
             <a
               href="#messages"
               onClick={() => {
@@ -81,7 +81,7 @@ const Navbar = ({ goToSection }) => {
               Echoes
             </a>
           </li>
-          <li className="nav-link relative my-3 transition hover:text-secondary">
+          <li className="nav-link tracking-wide-transition relative my-3">
             <a
               href="#post-message"
               onClick={() => {

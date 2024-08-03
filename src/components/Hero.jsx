@@ -1,19 +1,27 @@
 import React from "react";
 
-const Hero = () => {
+const Hero = ({ goToSection }) => {
   return (
     <div
       id="home"
-      className="flex h-screen w-full flex-col items-center justify-center text-text"
-      style={{ background: "linear-gradient(135deg, #080a1d, #8e94df)" }}
+      className="gradient-bg flex h-screen w-full flex-col items-center justify-center text-text"
     >
-      <div className="relative z-10 p-4 text-center">
-        <h1 className="text-7xl font-bold text-text">Echo</h1>
-        <p className="mb-4 mt-2 text-2xl font-medium text-text">
-          Your Voice, Your Echo
+      <div className="relative z-10 max-w-3xl p-4 text-left">
+        <p className="mb-4 text-3xl font-medium text-text">
+          Welcome to Echo, a platform where your voice is heard and your
+          thoughts can be shared freely.
         </p>
-        <button className="rounded bg-secondary px-4 py-2 text-text transition hover:bg-accent">
-          Make An Echo
+        <p className="mb-8 text-3xl font-medium">
+          It's simply{" "}
+          <i className="tracking-wide-animation font-bold">
+            Your Voice, Your Echo.
+          </i>
+        </p>
+        <button
+          className="rounded bg-secondary px-4 py-2 text-text transition hover:bg-accent"
+          onClick={() => goToSection("about")}
+        >
+          Learn More
         </button>
       </div>
     </div>
