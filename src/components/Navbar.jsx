@@ -40,7 +40,7 @@ const Navbar = ({ goToSection }) => {
           </li>
           <li className="nav-link tracking-wide-transition">
             <a href="#post-message" onClick={() => goToSection("post-message")}>
-              Make an Echo
+              Echo.
             </a>
           </li>
         </ul>
@@ -56,7 +56,7 @@ const Navbar = ({ goToSection }) => {
       <div
         className={`${
           nav ? "flex" : "hidden"
-        } fixed left-0 top-20 z-20 w-full flex-col items-center bg-background/10 text-text backdrop-blur-md lg:hidden`}
+        } fixed left-0 top-20 z-20 w-full flex-col items-center bg-background/10 text-text backdrop-blur-lg lg:hidden`}
       >
         <ul className="flex-col text-center font-semibold">
           <li className="nav-link tracking-wide-transition relative mb-3">
@@ -89,7 +89,7 @@ const Navbar = ({ goToSection }) => {
                 goToSection("post-message");
               }}
             >
-              Make an Echo
+              Echo.
             </a>
           </li>
         </ul>

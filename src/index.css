@@ -4,12 +4,13 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Syne:wght@400..800&display=swap");
 
+/* Global styles */
 body {
   @apply bg-background text-text;
   font-family: "Syne", serif;
 }
 
-/* Ensure smooth scrolling behavior */
+/* Smooth scrolling behavior */
 html {
   scroll-behavior: smooth;
 }
@@ -56,7 +57,7 @@ html::-webkit-scrollbar {
   filter: blur(100px); /* Adjust the blur intensity as needed */
 }
 
-/* Add this to your existing index.css or a separate CSS file */
+/* Tracking-wide transition */
 .tracking-wide-transition {
   position: relative;
   display: inline-block;

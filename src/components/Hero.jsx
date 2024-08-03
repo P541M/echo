@@ -19,10 +19,10 @@ const Hero = ({ goToSection }) => {
           </i>
         </p>
         <button
-          className="rounded bg-secondary px-4 py-2 text-text transition hover:bg-accent"
-          onClick={() => goToSection("about")}
+          className="transform rounded-full bg-primary px-6 py-3 text-xl font-semibold text-text shadow-xl transition-transform duration-200 ease-in-out hover:scale-105 hover:bg-accent"
+          onClick={() => goToSection("post-message")}
         >
-          Learn More
+          C'mon, Echo.
         </button>
       </div>
     </div>
