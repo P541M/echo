@@ -18,7 +18,7 @@ const Navbar = ({ goToSection }) => {
   }, []);
 
   return (
-    <div className="fixed left-0 right-0 z-[1000] h-20 text-text backdrop-blur-md">
+    <div className="fixed left-0 right-0 z-[1000] h-20 bg-background/10 text-text backdrop-blur-md">
       <div className="relative flex h-full items-center justify-between px-14">
         <div
           onClick={() => goToSection("home")}
@@ -56,10 +56,10 @@ const Navbar = ({ goToSection }) => {
       <div
         className={`${
           nav ? "block" : "hidden"
-        } fixed left-0 top-20 z-20 w-full text-text backdrop-blur-md lg:hidden`}
+        } fixed left-0 top-20 z-20 w-full bg-background/10 text-text backdrop-blur-md lg:hidden`}
       >
         <ul className="text-center font-semibold">
-          <li className="nav-link relative my-3 transition hover:text-secondary">
+          <li className="nav-link relative mb-3 transition hover:text-secondary">
             <a
               href="#about"
               onClick={() => {
