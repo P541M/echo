@@ -17,21 +17,15 @@ html {
 /* Hide default scrollbars */
 html,
 body {
-  overflow: hidden; /* Prevent default scroll */
+  overflow: auto; /* Allow default scroll */
 }
 
-#main-container {
-  position: relative;
-  overflow: hidden;
+html {
+  overflow: -moz-scrollbars-none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
-[data-scroll-container] {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-}
-
-[data-scroll-section] {
-  position: relative;
-  will-change: transform;
+html::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }

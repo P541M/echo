@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import useLocomotiveScroll from "./hooks/useLocomotiveScroll";
 import SplashScreen from "./components/SplashScreen";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -12,8 +11,6 @@ import MessageBoard from "./components/MessageBoard";
 import "./index.css";
 
 const App = () => {
-  useLocomotiveScroll(); // Initialize Locomotive Scroll
-
   const [messages, setMessages] = useState([]);
   const [showBoard, setShowBoard] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
@@ -98,11 +95,7 @@ const App = () => {
   };
 
   return (
-    <div
-      id="main-container"
-      data-scroll-container
-      className="h-full w-full bg-background text-text"
-    >
+    <div className="h-full w-full bg-background text-text">
       {showSplash && (
         <SplashScreen onFadeComplete={() => setShowSplash(false)} />
       )}
