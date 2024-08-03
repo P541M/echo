@@ -18,27 +18,27 @@ const Navbar = ({ goToSection }) => {
   }, []);
 
   return (
-    <div className="z-[1000] fixed left-0 right-0 h-20 bg-background/50 backdrop-blur-md text-text">
-      <div className="flex justify-between items-center h-full px-8 relative">
+    <div className="fixed left-0 right-0 z-[1000] h-20 text-text backdrop-blur-md">
+      <div className="relative flex h-full items-center justify-between px-14">
         <div
           onClick={() => goToSection("home")}
-          className="logo-container nav-link cursor-pointer absolute left-1/2 transform -translate-x-1/2 lg:static lg:transform-none"
+          className="logo-container nav-link absolute left-1/2 -translate-x-1/2 transform cursor-pointer lg:static lg:transform-none"
         >
           <span className="text-2xl font-bold">Echo</span>
         </div>
 
-        <ul className="hidden lg:flex font-medium items-center text-lg space-x-8">
-          <li className="nav-link">
+        <ul className="hidden items-center space-x-8 text-lg font-medium lg:flex">
+          <li className="nav-link transition hover:text-secondary">
             <a href="#about" onClick={() => goToSection("about")}>
               About
             </a>
           </li>
-          <li className="nav-link">
+          <li className="nav-link transition hover:text-secondary">
             <a href="#messages" onClick={() => goToSection("messages")}>
               Echoes
             </a>
           </li>
-          <li className="nav-link">
+          <li className="nav-link transition hover:text-secondary">
             <a href="#post-message" onClick={() => goToSection("post-message")}>
               Make an Echo
             </a>
@@ -47,7 +47,7 @@ const Navbar = ({ goToSection }) => {
 
         <div
           onClick={handleNav}
-          className="block lg:hidden fixed top-4 right-4 z-30"
+          className="fixed right-4 top-4 z-30 block lg:hidden"
         >
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
@@ -56,10 +56,10 @@ const Navbar = ({ goToSection }) => {
       <div
         className={`${
           nav ? "block" : "hidden"
-        } fixed top-20 left-0 w-full z-20 bg-background/50 backdrop-blur-md text-text lg:hidden`}
+        } fixed left-0 top-20 z-20 w-full text-text backdrop-blur-md lg:hidden`}
       >
-        <ul className="font-semibold text-center backdrop-blur-md">
-          <li className="my-3 nav-link relative">
+        <ul className="text-center font-semibold">
+          <li className="nav-link relative my-3 transition hover:text-secondary">
             <a
               href="#about"
               onClick={() => {
@@ -70,7 +70,7 @@ const Navbar = ({ goToSection }) => {
               About
             </a>
           </li>
-          <li className="my-3 nav-link relative">
+          <li className="nav-link relative my-3 transition hover:text-secondary">
             <a
               href="#messages"
               onClick={() => {
@@ -81,7 +81,7 @@ const Navbar = ({ goToSection }) => {
               Echoes
             </a>
           </li>
-          <li className="my-3 nav-link relative">
+          <li className="nav-link relative my-3 transition hover:text-secondary">
             <a
               href="#post-message"
               onClick={() => {
