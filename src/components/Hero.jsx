@@ -4,9 +4,10 @@ const Hero = ({ goToSection }) => {
   return (
     <div
       id="home"
-      className="gradient-bg flex h-screen w-full flex-col items-center justify-center text-text"
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden text-text"
     >
-      <div className="relative z-10 max-w-3xl p-4 text-left">
+      <div className="gradient-bg absolute inset-0"></div>
+      <div className="relative z-10 max-w-3xl p-8 text-left">
         <p className="mb-4 text-3xl font-medium text-text">
           Welcome to Echo, a platform where your voice is heard and your
           thoughts can be shared freely.

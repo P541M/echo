@@ -43,10 +43,17 @@ html::-webkit-scrollbar {
   }
 }
 
-.gradient-bg {
+.gradient-bg::before {
+  content: "";
+  position: absolute;
+  top: -100px; /* Adjust based on the blur amount */
+  left: -100px; /* Adjust based on the blur amount */
+  right: -100px; /* Adjust based on the blur amount */
+  bottom: -100px; /* Adjust based on the blur amount */
   background: linear-gradient(45deg, #5e2b7f, #3f4fc4, #8e94df, #141628);
   background-size: 200% 200%;
   animation: gradientWave 15s ease infinite;
+  filter: blur(100px); /* Adjust the blur intensity as needed */
 }
 
 /* Add this to your existing index.css or a separate CSS file */
