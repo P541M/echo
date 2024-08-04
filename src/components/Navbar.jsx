@@ -24,10 +24,10 @@ const Navbar = ({ goToSection }) => {
           onClick={() => goToSection("home")}
           className="logo-container nav-link absolute left-1/2 -translate-x-1/2 transform cursor-pointer lg:static lg:transform-none"
         >
-          <span className="text-2xl font-bold">Echo</span>
+          <span className="text-3xl font-bold">Echo</span>
         </div>
 
-        <ul className="hidden items-center space-x-8 text-lg font-medium lg:flex">
+        <ul className="hidden items-center space-x-8 text-xl font-medium lg:flex">
           <li className="nav-link tracking-wide-transition">
             <a href="#about" onClick={() => goToSection("about")}>
               About
