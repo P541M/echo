@@ -1,18 +1,45 @@
 import React from "react";
+import {
+  FaCommentDots,
+  FaEye,
+  FaThumbsUp,
+  FaUserSecret,
+  FaClock,
+  FaLock,
+} from "react-icons/fa";
 
 const HowItWorks = () => {
   return (
     <div
       id="how-it-works"
-      className="w-full flex flex-col items-center bg-background text-text py-8"
+      className="flex h-[75vh] w-full flex-col items-center justify-center bg-background text-text"
     >
-      <h2 className="text-4xl font-bold mb-4">How It Works</h2>
-      <ul className="list-none text-center">
-        <li className="mb-2">Say whatever you want</li>
-        <li className="mb-2">Look at others' messages</li>
-        <li className="mb-2">Like messages that resonate with you</li>
-        <li className="mb-2">Stay 100% anonymous</li>
-        <li>Everything is cleared at 12 AM EST</li>
+      <h2 className="mb-20 text-6xl font-bold">It's That Simple</h2>
+      <ul className="grid grid-cols-1 gap-10 text-center md:grid-cols-3">
+        <li className="flex flex-col items-center">
+          <FaLock className="mb-4 text-5xl" />
+          <span className="text-xl">No signup, no information stored</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <FaUserSecret className="mb-4 text-5xl" />
+          <span className="text-xl">Maintain complete anonymity</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <FaCommentDots className="mb-4 text-5xl" />
+          <span className="text-xl">Express yourself freely</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <FaEye className="mb-4 text-5xl" />
+          <span className="text-xl">Read anonymous messages</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <FaThumbsUp className="mb-4 text-5xl" />
+          <span className="text-xl">Like what resonates</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <FaClock className="mb-4 text-5xl" />
+          <span className="text-xl">Database reset daily at 12 AM EST</span>
+        </li>
       </ul>
     </div>
   );

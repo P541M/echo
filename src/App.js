@@ -113,8 +113,8 @@ const App = () => {
           ) : (
             <>
               <Hero />
-              <About />
               <HowItWorks />
+              <About />
               <MessagesSection
                 messages={messages}
                 likeMessage={likeMessage}
