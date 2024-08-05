@@ -59,19 +59,12 @@ html::-webkit-scrollbar {
 
 /* Tracking-wide transition */
 .tracking-wide-transition {
-  position: relative;
-  display: inline-block;
-  transition: letter-spacing 0.3s ease;
-}
-
-.tracking-wide-transition a {
-  position: relative;
   display: inline-block;
   transition: letter-spacing 0.3s ease;
   text-align: center;
 }
 
-.tracking-wide-transition:hover a {
+.tracking-wide-transition:hover {
   letter-spacing: 0.1em;
 }
 

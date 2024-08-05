@@ -1,20 +1,20 @@
 import React from "react";
 
-const About = () => {
+const About = ({ goToLearnMore }) => {
   return (
     <div
       id="about"
-      className="w-full flex flex-col items-center justify-center py-20 bg-backgroundLight"
+      className="relative flex h-[25vh] w-full flex-col items-center justify-center overflow-hidden"
     >
-      <div className="relative z-10 text-center p-4 max-w-3xl">
-        <p className="text-xl mb-4">
-          Echo is a platform where you can express your thoughts freely and
-          anonymously. Every message gets cleared at 12 AM EST, giving you a
-          fresh start each day.
+      <div className="gradient-bg absolute inset-0 opacity-50"></div>
+      <div className="relative z-10 max-w-4xl p-4 text-center">
+        <p className="mb-4 text-2xl">
+          Discover Echo, your go-to platform for expressing thoughts freely and
+          anonymously. Start fresh every day with messages cleared at 12 AM EST.
         </p>
         <p
-          className="text-secondary cursor-pointer hover:text-accent transition"
-          onClick={() => alert("Learn More clicked!")}
+          className="tracking-wide-transition cursor-pointer text-xl font-medium"
+          onClick={goToLearnMore}
         >
           Learn More
         </p>
