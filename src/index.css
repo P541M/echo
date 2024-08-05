@@ -51,7 +51,7 @@ html::-webkit-scrollbar {
   left: -500px; /* Adjust based on the blur amount */
   right: -500px; /* Adjust based on the blur amount */
   bottom: -500px; /* Adjust based on the blur amount */
-  background: linear-gradient(45deg, #5e2b7f, #3f4fc4, #8e94df, #141628);
+  background: linear-gradient(45deg, #4f6dff, #2d3e8e, #4fc3f7, #121839);
   background-size: 200% 200%;
   animation: gradientWave 15s ease infinite;
   filter: blur(100px); /* Adjust the blur intensity as needed */

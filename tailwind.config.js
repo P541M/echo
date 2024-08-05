@@ -5,12 +5,12 @@ module.exports = {
     extend: {
       colors: {
         text: "#e9ebf9",
-        background: "#080a1d",
-        primary: "#8e94df",
-        secondary: "#5e2b7f",
-        accent: "#3f4fc4",
-        backgroundDark: "#060816",
-        backgroundLight: "#141628",
+        background: "#0a0e2a", // Dark blue background
+        primary: "#4f6dff", // Light blue
+        secondary: "#2d3e8e", // Darker blue
+        accent: "#4fc3f7", // Cyan
+        backgroundDark: "#06081e", // Very dark blue
+        backgroundLight: "#121839", // Light dark blue
       },
     },
   },
