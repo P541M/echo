@@ -17,13 +17,10 @@ const MessagesSection = ({ messages, likeMessage, userId }) => {
               .map((message) => (
                 <div
                   key={message.id}
-                  className="rounded-2xl bg-secondary p-6 shadow-lg transition-transform duration-200 ease-in-out hover:scale-105"
+                  className="relative flex h-64 flex-col justify-between rounded-2xl bg-secondary p-6 shadow-lg transition-transform duration-200 ease-in-out hover:scale-105"
                 >
                   <p className="mb-4 text-lg">{message.text}</p>
-                  <p className="text-right text-xs text-gray-400">
-                    {message.timestamp}
-                  </p>
-                  <div className="mt-4 flex items-center justify-between">
+                  <div className="absolute bottom-4 left-4 flex items-center">
                     <button
                       onClick={() => likeMessage(message.id)}
                       className="text-accent transition-transform duration-200 ease-in-out hover:scale-125"
@@ -34,8 +31,11 @@ const MessagesSection = ({ messages, likeMessage, userId }) => {
                         <AiOutlineHeart className="text-2xl" />
                       )}
                     </button>
-                    <span className="text-lg">{message.likes || 0}</span>
+                    <span className="ml-2 text-lg">{message.likes || 0}</span>
                   </div>
+                  <p className="absolute bottom-4 right-4 text-xs text-gray-400">
+                    {message.time}
+                  </p>
                 </div>
               ))}
           </div>
