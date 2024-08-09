@@ -1,7 +1,8 @@
 import React from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { GiSpeakerOff } from "react-icons/gi"; // Example icon for the "Muffle" button
 
-const MessagesSection = ({ messages, likeMessage, userId }) => {
+const MessagesSection = ({ messages, likeMessage, muffleMessage, userId }) => {
   return (
     <div
       id="messages"
@@ -37,6 +38,17 @@ const MessagesSection = ({ messages, likeMessage, userId }) => {
                         </button>
                         <span className="ml-2 text-lg">
                           {message.likes || 0}
+                        </span>
+                      </div>
+                      <div className="flex items-center">
+                        <button
+                          onClick={() => muffleMessage(message.id)}
+                          className="text-red-500 transition-transform duration-200 ease-in-out hover:scale-125"
+                        >
+                          <GiSpeakerOff eOff className="text-2xl" />
+                        </button>
+                        <span className="ml-2 text-lg">
+                          {message.muffles || 0}
                         </span>
                       </div>
                       <p className="text-xs text-gray-400">{message.time}</p>
