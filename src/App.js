@@ -4,7 +4,7 @@ import SplashScreen from "./components/SplashScreen";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
-import MessagesSection from "./components/MessagesSection";
+import MessagePreview from "./components/MessagePreview";
 import InputPage from "./components/InputPage";
 import MessageBoard from "./components/MessageBoard";
 import "./index.css";
@@ -140,7 +140,7 @@ const App = () => {
             <>
               <Hero />
               <HowItWorks />
-              <MessagesSection
+              <MessagePreview
                 messages={messages}
                 likeMessage={likeMessage}
                 muffleMessage={muffleMessage}
