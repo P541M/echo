@@ -146,13 +146,13 @@ const App = () => {
                 muffleMessage={muffleMessage}
                 userId={localStorage.getItem("userId") || generateUserId()}
               />
-              {/* <InputPage
+              <InputPage
                 addMessage={addMessage}
                 goToMessageBoard={setShowBoard}
                 showDisclaimer={showDisclaimer}
                 goToDisclaimer={() => setShowDisclaimer(true)}
                 goBack={() => setShowDisclaimer(false)}
-              /> */}
+              />
             </>
           )}
         </>
