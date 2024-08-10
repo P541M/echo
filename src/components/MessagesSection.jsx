@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { GiSpeakerOff } from "react-icons/gi"; // Example icon for the "Muffle" button
+import { GiSpeakerOff } from "react-icons/gi"; // Import the muffle icon
 
 const MessagesSection = ({ messages, likeMessage, muffleMessage, userId }) => {
   return (
@@ -14,7 +14,7 @@ const MessagesSection = ({ messages, likeMessage, muffleMessage, userId }) => {
           <div className="grid grid-cols-1 justify-center gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             {messages
               .slice()
-              .reverse()
+              .sort((a, b) => b.likes - a.muffles - (a.likes - a.muffles)) // Sort by likes and muffles
               .map((message) => (
                 <div
                   key={message.id}
@@ -45,7 +45,7 @@ const MessagesSection = ({ messages, likeMessage, muffleMessage, userId }) => {
                           onClick={() => muffleMessage(message.id)}
                           className="text-red-500 transition-transform duration-200 ease-in-out hover:scale-125"
                         >
-                          <GiSpeakerOff eOff className="text-2xl" />
+                          <GiSpeakerOff className="text-2xl" />
                         </button>
                         <span className="ml-2 text-lg">
                           {message.muffles || 0}

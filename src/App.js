@@ -94,6 +94,33 @@ const App = () => {
     document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
   };
 
+  const muffleMessage = async (messageId) => {
+    const userId = localStorage.getItem("userId") || generateUserId();
+    try {
+      await axios.post("http://localhost:5000/muffle-message", {
+        messageId,
+        userId,
+      });
+      setMessages((prevMessages) =>
+        prevMessages.map((msg) =>
+          msg.id === messageId
+            ? {
+                ...msg,
+                muffles: msg.muffledBy.includes(userId)
+                  ? msg.muffles - 1
+                  : msg.muffles + 1,
+                muffledBy: msg.muffledBy.includes(userId)
+                  ? msg.muffledBy.filter((id) => id !== userId)
+                  : [...msg.muffledBy, userId],
+              }
+            : msg,
+        ),
+      );
+    } catch (error) {
+      console.error("Failed to muffle message:", error);
+    }
+  };
+
   return (
     <div className="h-full w-full bg-background text-text">
       {showSplash && (
@@ -118,6 +145,7 @@ const App = () => {
               <MessagesSection
                 messages={messages}
                 likeMessage={likeMessage}
+                muffleMessage={muffleMessage}
                 userId={localStorage.getItem("userId") || generateUserId()}
               />
               <InputPage
