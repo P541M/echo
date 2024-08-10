@@ -16,13 +16,13 @@ const SplashScreen = ({ onFadeComplete }) => {
 
   return (
     <div
-      className={`z-[9999] fixed top-0 left-0 w-full h-full flex items-center justify-center bg-background transition-opacity duration-1000 ${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+      className={`fixed left-0 top-0 z-[9999] flex h-full w-full items-center justify-center bg-background transition-opacity duration-1000 ${
+        isVisible ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
       <div className="flex flex-col items-center">
         <h1 className="text-7xl font-bold text-text">Echo</h1>
-        <p className="text-2xl font-medium mt-2 text-text">
+        <p className="mt-2 text-2xl font-medium text-text">
           Your Voice, Your Echo
         </p>
       </div>
