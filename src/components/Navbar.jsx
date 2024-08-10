@@ -3,6 +3,8 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = ({ goToSection }) => {
   const [nav, setNav] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleNav = () => setNav(!nav);
 
@@ -17,8 +19,36 @@ const Navbar = ({ goToSection }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (nav) {
+        // If the mobile menu is open, close it first
+        setNav(false);
+      }
+
+      if (currentScrollY <= 0) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setIsVisible(false); // Hide navbar when scrolling down
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true); // Show navbar when scrolling up
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, nav]);
+
   return (
-    <div className="fixed left-0 right-0 top-0 z-[1000] h-20 bg-background/10 backdrop-blur-md">
+    <div
+      className={`fixed left-0 right-0 top-0 z-[1000] h-20 backdrop-blur-md transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="relative flex h-full items-center justify-between px-14">
         <div
           onClick={() => goToSection("home")}
@@ -56,7 +86,7 @@ const Navbar = ({ goToSection }) => {
       <div
         className={`${
           nav ? "flex" : "hidden"
-        } fixed left-0 top-20 z-20 w-full flex-col items-center bg-background/10 backdrop-blur-lg lg:hidden`}
+        } fixed left-0 top-20 z-20 w-full flex-col items-center backdrop-blur-lg lg:hidden`}
       >
         <ul className="flex flex-col items-center text-center font-semibold">
           <li className="nav-link tracking-wide-transition relative mb-3">
