@@ -33,9 +33,9 @@ const Hero = ({ goToSection, goToLearnMore }) => {
         <hr className="relative z-10 mb-8 w-3/4 border-t border-text" />
         <div className="relative z-10 max-w-5xl p-4 text-center">
           <p className="mb-4 text-3xl">
-            Discover Echo, your go-to spot for expressing thoughts freely and
-            anonymously. Start fresh every day with messages cleared at 12 AM
-            EST.
+            Discover <span className="font-semibold">Echo</span>, your go-to
+            spot for expressing thoughts freely and anonymously. Start fresh
+            every day with messages cleared at 12 AM EST.
           </p>
           <p
             className="tracking-wide-transition cursor-pointer text-xl font-medium"
