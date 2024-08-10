@@ -14,7 +14,7 @@ const HowItWorks = () => {
   return (
     <div
       id="how-it-works"
-      className="relative flex h-[75vh] w-full flex-col items-center justify-center overflow-hidden"
+      className="relative flex h-[100vh] w-full flex-col items-center justify-center overflow-hidden"
     >
       <div className="gradient-bg absolute inset-0 opacity-25"></div>
       <div className="relative z-10 max-w-5xl p-8 text-left">

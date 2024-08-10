@@ -84,20 +84,3 @@ html::-webkit-scrollbar {
 .tracking-wide-animation {
   animation: trackingWide 8s ease-in-out infinite;
 }
-
-/* Floating effect for the messages in the Hero section */
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
