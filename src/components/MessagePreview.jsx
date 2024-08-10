@@ -1,25 +1,12 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { GiSpeakerOff } from "react-icons/gi"; // Import the muffle icon
 
 const MessagePreview = ({ messages, likeMessage, muffleMessage, userId }) => {
-  // Function to shuffle the messages array
-  const shuffleArray = (array) => {
-    return array.sort(() => Math.random() - 0.5);
-  };
-
-  // Shuffle and select 5 random messages
-  const randomMessages = useMemo(() => {
-    return shuffleArray(messages).slice(0, 5);
-  }, [messages]);
-
-  // Calculate the score and sort selected random messages based on it
-  const sortedMessages = randomMessages
-    .map((message) => ({
-      ...message,
-      score: (message.likes || 0) - (message.muffles || 0), // Calculate score
-    }))
-    .sort((a, b) => b.score - a.score); // Sort by score
+  // Sort messages by their posting time (assuming each message has a 'time' field)
+  const recentMessages = messages
+    .sort((a, b) => new Date(b.time) - new Date(a.time)) // Sort by most recent first
+    .slice(0, 5); // Take the first 5 messages
 
   return (
     <div
@@ -32,7 +19,7 @@ const MessagePreview = ({ messages, likeMessage, muffleMessage, userId }) => {
         </h2>
         <div className="container mx-auto flex justify-center px-4">
           <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-            {sortedMessages.map((message) => (
+            {recentMessages.map((message) => (
               <div
                 key={message.id}
                 className="relative flex flex-col items-center justify-center rounded-2xl bg-secondary p-6 shadow-lg transition-transform duration-200 ease-in-out hover:scale-105"
