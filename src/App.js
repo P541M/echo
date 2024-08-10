@@ -3,7 +3,6 @@ import axios from "axios";
 import SplashScreen from "./components/SplashScreen";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
 import HowItWorks from "./components/HowItWorks";
 import MessagesSection from "./components/MessagesSection";
 import InputPage from "./components/InputPage";
@@ -140,7 +139,6 @@ const App = () => {
           ) : (
             <>
               <Hero />
-              <About />
               <HowItWorks />
               <MessagesSection
                 messages={messages}
